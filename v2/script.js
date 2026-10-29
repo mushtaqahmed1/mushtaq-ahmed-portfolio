@@ -219,7 +219,8 @@ function initDrawers() {
   });
 
   // Deep link: index.html#case-cwb opens that case study directly
-  const fromHash = location.hash && document.querySelector(`dialog.drawer${CSS.escape(location.hash)}`);
+  // Escape only the id (not the leading "#") so arbitrary hash text can never alter the selector
+  const fromHash = location.hash.length > 1 && document.querySelector(`dialog.drawer#${CSS.escape(location.hash.slice(1))}`);
   if (fromHash) {
     const trigger = document.querySelector(`[data-open="${fromHash.id}"]`);
     open(fromHash, trigger);
