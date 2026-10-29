@@ -1,0 +1,8 @@
+# Personal source files (resume, credential notes, original screenshots): never commit or publish
+_private/
+*.docx
+*.jfif
+
+# OS / editor noise
+Thumbs.db
+.DS_Store

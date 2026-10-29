@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Mushtaq Ahmed · Microsoft Fabric ETL Developer</title>
+  <meta name="description" content="Mushtaq Ahmed — Microsoft Fabric ETL Developer, Data Engineer and SAS Developer. 6+ years building enterprise data pipelines. Microsoft Certified: Fabric Data Engineer Associate (DP-700).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="boot.js"></script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__count"><span id="loader-num">0</span>%</div>
+    <div class="loader__label">Loading pipelines</div>
+  </div>
+
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="nav__logo" data-magnetic>Mushtaq<sup>®</sup></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+    </nav>
+    <a href="#contact" class="nav__cta" data-magnetic>Let's talk</a>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__meta">
+        <span><i class="dot"></i>Open to new projects</span>
+        <span>Edmonton, AB · <span id="local-time">--:--</span></span>
+      </div>
+      <h1 class="hero__name">
+        <span class="line"><span>Mushtaq</span></span>
+        <span class="line line--indent"><span>Ahmed<em class="hero__star">✳</em></span></span>
+      </h1>
+      <div class="hero__bottom">
+        <p class="hero__title">
+          <span class="hl">Microsoft Fabric</span><br>ETL Developer
+        </p>
+        <p class="hero__lead">
+          I turn messy data from dozens of systems into clean, trusted, analytics-ready data.
+          6+ years across banking and construction, from SAS and SSIS to Microsoft Fabric.
+        </p>
+        <a href="#work" class="hero__scroll" aria-label="Scroll to work">
+          <span>Scroll</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Microsoft Fabric</span><b>✳</b><span>Lakehouse</span><b>✳</b><span>Data Pipelines</span><b>✳</b>
+        <span>SAS Viya</span><b>✳</b><span>Azure Data Factory</span><b>✳</b><span>PySpark</span><b>✳</b>
+        <span>Power BI</span><b>✳</b><span>DP-700 Certified</span><b>✳</b>
+        <span>Microsoft Fabric</span><b>✳</b><span>Lakehouse</span><b>✳</b><span>Data Pipelines</span><b>✳</b>
+        <span>SAS Viya</span><b>✳</b><span>Azure Data Factory</span><b>✳</b><span>PySpark</span><b>✳</b>
+        <span>Power BI</span><b>✳</b><span>DP-700 Certified</span><b>✳</b>
+      </div>
+    </div>
+
+    <!-- Selected work -->
+    <section class="section" id="work">
+      <div class="section__head">
+        <h2 class="title">Pipelines that<br>power decisions</h2>
+      </div>
+
+      <div class="work">
+        <article class="case case--yellow" data-cursor="Read">
+          <div class="case__top">
+            <span class="case__num">01</span>
+            <span class="case__year">2025 — Now</span>
+          </div>
+          <div class="case__metric"><span data-count="20" data-suffix="+">20+</span><small>source systems unified</small></div>
+          <div class="case__body">
+            <h3>Tantus Solutions Group</h3>
+            <p class="case__client">Client: PCL Construction</p>
+            <p>Architected and own the Microsoft Fabric staging &amp; ingestion layer for a national construction leader, spanning Salesforce, Oracle, SAP, AON, HR and Bond. Query performance improved ~40%, with 100% on-time delivery against ingestion SLAs.</p>
+            <ul class="chips"><li>Fabric</li><li>Dataflow Gen2</li><li>Lakehouse</li><li>Purview</li></ul>
+            <p class="case__role">Microsoft Fabric ETL Developer · Edmonton, AB</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="case-pcl" aria-label="Read more about my work at Tantus Solutions Group for client PCL Construction"></button>
+        </article>
+
+        <article class="case case--blue" data-cursor="Read">
+          <div class="case__top">
+            <span class="case__num">02</span>
+            <span class="case__year">2022 — 2025</span>
+          </div>
+          <div class="case__metric"><span data-count="20" data-suffix="M+">20M+</span><small>records per batch cycle</small></div>
+          <div class="case__body">
+            <h3>Tantus Solutions Group</h3>
+            <p class="case__client">Client: Canadian Western Bank</p>
+            <p>Owned every incremental ETL pipeline across core banking, AML/KYC and FINTRAC regulatory data, holding 99.5% SLA compliance for three years. Test-driven pipelines cut production defects by 45%.</p>
+            <ul class="chips"><li>SAS DI Studio</li><li>SAS Viya</li><li>CDC · SCD2</li><li>Denodo</li></ul>
+            <p class="case__role">ETL Developer / Data Consultant · Edmonton, AB</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="case-cwb" aria-label="Read more about my work at Tantus Solutions Group for client Canadian Western Bank"></button>
+        </article>
+
+        <article class="case case--orange" data-cursor="Read">
+          <div class="case__top">
+            <span class="case__num">03</span>
+            <span class="case__year">2021 — 2022</span>
+          </div>
+          <div class="case__metric"><span data-count="10" data-suffix="M+">10M+</span><small>records / day, 0 missed SLAs</small></div>
+          <div class="case__body">
+            <h3>LifeWorks</h3>
+            <p>Engineered SSIS and Azure Data Factory pipelines for enterprise analytics, tuned SQL workloads for 21% faster performance, and shipped 10+ executive Power BI dashboards.</p>
+            <ul class="chips"><li>SSIS</li><li>Azure Data Factory</li><li>Azure SQL</li><li>Power BI</li></ul>
+            <p class="case__role">MSBI Developer</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="case-lifeworks" aria-label="Read more about LifeWorks"></button>
+        </article>
+
+        <article class="case case--green" data-cursor="Read">
+          <div class="case__top">
+            <span class="case__num">04</span>
+            <span class="case__year">2019 — 2021</span>
+          </div>
+          <div class="case__metric"><span data-count="50" data-suffix="+">50+</span><small>legacy DTS packages modernized</small></div>
+          <div class="case__body">
+            <h3>Russell Hendrix</h3>
+            <p>Migrated end-of-life DTS packages into modular SSIS frameworks, built EDW pipelines ingesting 8M+ records at 99.9% accuracy, and replicated schemas into Snowflake.</p>
+            <ul class="chips"><li>SQL Server</li><li>SSIS</li><li>Snowflake</li><li>EDW</li></ul>
+            <p class="case__role">SQL / MSBI Developer</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="case-rh" aria-label="Read more about Russell Hendrix"></button>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <p class="statement" data-words>
+        I'm a Microsoft Certified Fabric Data Engineer and SAS Developer who builds the plumbing behind
+        regulatory reporting, financial crime detection and executive analytics. Reliable pipelines,
+        clean models, and numbers people can actually trust.
+      </p>
+      <ul class="stats">
+        <li><strong><span data-count="6">6</span>+</strong><span>Years in data engineering</span></li>
+        <li><strong><span data-count="99.5" data-decimals="1">99.5</span>%</strong><span>SLA compliance</span></li>
+        <li><strong>−<span data-count="45">45</span>%</strong><span>Production defects</span></li>
+        <li><strong><span data-count="150">150</span>+</strong><span>Packages migrated to SAS Viya</span></li>
+      </ul>
+    </section>
+
+    <!-- Process -->
+    <section class="section process">
+      <div class="section__head">
+        <h2 class="title">Bronze to gold,<br>end to end</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">01</span>
+          <h3>Ingest</h3>
+          <p>Fabric Data Pipelines and ADF pull from 20+ systems with incremental, historical and CDC loads that are restartable by design.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">02</span>
+          <h3>Transform</h3>
+          <p>Dataflow Gen2, notebooks, SAS and T-SQL cleanse and conform data through medallion layers in OneLake.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">03</span>
+          <h3>Model</h3>
+          <p>Dimensional models, SCD Type 2 history and Power BI semantic models built for fast, consistent reporting.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">04</span>
+          <h3>Govern</h3>
+          <p>Profiling, reconciliation, checksum tests, lineage and Purview classification keep every number auditable.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="section__head">
+        <h2 class="title">The toolkit</h2>
+      </div>
+      <ul class="skills">
+        <li class="skill"><span class="skill__n">01</span><h3>Microsoft Fabric</h3><p>Data Pipelines · Dataflow Gen2 · Notebooks · Warehouse · Lakehouse · OneLake · Delta Lake</p></li>
+        <li class="skill"><span class="skill__n">02</span><h3>SAS</h3><p>Base SAS · Macro · PROC SQL · PROC PYTHON · DI Studio · Viya · Enterprise Guide · Flow Manager</p></li>
+        <li class="skill"><span class="skill__n">03</span><h3>Azure &amp; Integration</h3><p>Azure Data Factory · ADLS Gen2 · Blob Storage · Azure SQL · SSIS · Denodo · Pentaho · Snowflake</p></li>
+        <li class="skill"><span class="skill__n">04</span><h3>Databases &amp; Modelling</h3><p>SQL Server · PostgreSQL · DB2 · EDW · Data Marts · Star &amp; Snowflake Schema · ERwin</p></li>
+        <li class="skill"><span class="skill__n">05</span><h3>Languages</h3><p>SQL · T-SQL · Python · PowerShell · Unix Shell · XML · JSON</p></li>
+        <li class="skill"><span class="skill__n">06</span><h3>BI &amp; Semantic Models</h3><p>Power BI · Semantic Models · DAX · Power Query (M) · SSRS</p></li>
+        <li class="skill"><span class="skill__n">07</span><h3>Quality &amp; Governance</h3><p>Data Profiling · Reconciliation · Checksum Validation · MDM · Lineage · Source-to-Target Mapping</p></li>
+        <li class="skill"><span class="skill__n">08</span><h3>AI &amp; DevOps</h3><p>GitHub Copilot · Generative AI · CI/CD · Deployment Pipelines · TFS · Jira · Agile/Scrum</p></li>
+      </ul>
+    </section>
+
+    <!-- Certifications & courses -->
+    <section class="section" id="certifications">
+      <div class="section__head">
+        <h2 class="title">Certified &amp;<br>always learning</h2>
+      </div>
+      <ul class="cert-cards">
+        <li class="cred-feature" data-cursor="Read">
+          <span class="cred-feature__badge">DP-700</span>
+          <div>
+            <h3>Microsoft Certified: Fabric Data Engineer Associate</h3>
+            <p>Microsoft · Aug 2026</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="cert-dp700" aria-label="Read more about Microsoft Certified: Fabric Data Engineer Associate"></button>
+        </li>
+        <li class="cred-feature" data-cursor="Read">
+          <span class="cred-feature__badge">SAS</span>
+          <div>
+            <h3>SAS SQL Essentials Knowledge Badge</h3>
+            <p>SAS · Jan 2026</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="cert-sas" aria-label="Read more about SAS SQL Essentials Knowledge Badge"></button>
+        </li>
+        <li class="cred-feature" data-cursor="Read">
+          <span class="cred-feature__badge cred-feature__badge--long">Databricks</span>
+          <div>
+            <h3>Academy Accreditation: Databricks Fundamentals</h3>
+            <p>Databricks · Jan 2026</p>
+            <span class="case__more">Read more <span aria-hidden="true">→</span></span>
+          </div>
+          <button class="case__open" data-open="cert-dbx" aria-label="Read more about Academy Accreditation: Databricks Fundamentals"></button>
+        </li>
+      </ul>
+      <div class="courses">
+        <div class="cred-groups">
+          <div>
+            <h3 class="cred-group__title">Courses</h3>
+            <ul class="cred-list">
+              <li><span>Responsible AI 2: Governance and Scaling for Leaders</span><span>Amii · Jul 2026</span></li>
+              <li><span>Responsible AI 1: Navigating Innovation in Practice</span><span>Amii · Jul 2026</span></li>
+              <li><span>ML Foundations 2: Strategy, Risk and Responsible AI Integration for Business</span><span>Amii · Jul 2026</span></li>
+              <li><span>ML Foundations 1: Getting Started with AI</span><span>Amii · Jun 2026</span></li>
+              <li><span>Python Data Science: Data Prep &amp; EDA with Python</span><span>Oct 2025</span></li>
+            </ul>
+            <p class="cred-note">Amii is the Alberta Machine Intelligence Institute.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <div class="section__head">
+        <h2 class="title">Education</h2>
+      </div>
+      <ul class="edu">
+        <li class="edu-card">
+          <div class="edu-card__top">
+            <span class="edu-card__logo"><img src="logos/tmu.svg" alt="Toronto Metropolitan University logo" width="80" height="44"></span>
+            <span class="edu-card__years">2020 — 2021</span>
+          </div>
+          <h3>Master of Engineering, Computer Networks</h3>
+          <p>Toronto Metropolitan University (formerly Ryerson University)</p>
+        </li>
+        <li class="edu-card">
+          <div class="edu-card__top">
+            <span class="edu-card__logo"><img src="logos/sr-university.png" alt="SR University logo" width="56" height="56"></span>
+            <span class="edu-card__years">2015 — 2019</span>
+          </div>
+          <h3>Bachelor of Technology, Computer Science &amp; Engineering</h3>
+          <p>SR University</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Contact -->
+  <footer class="contact" id="contact">
+    <p class="contact__intro">Got data that needs moving, modernizing or making sense of?</p>
+    <a class="contact__big" href="https://www.linkedin.com/in/mq-ahmed" target="_blank" rel="noopener noreferrer" data-cursor="Say hi">
+      <span>Let's talk</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+    <div class="contact__row">
+      <a class="pill" href="https://www.linkedin.com/in/mq-ahmed" target="_blank" rel="noopener noreferrer" data-magnetic>LinkedIn ↗</a>
+      <span>linkedin.com/in/mq-ahmed</span>
+    </div>
+    <div class="contact__foot">
+      <span>© <span id="year"></span> Mushtaq Ahmed</span>
+      <span>Microsoft Fabric ETL Developer</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- "Read more" drawers -->
+  <dialog class="drawer drawer--yellow" id="case-pcl" aria-labelledby="case-pcl-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>01 · 2025 — Now</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">Tantus Solutions Group Inc. · Client: PCL Construction</p>
+      <h2 class="drawer__title" id="case-pcl-title">A single Fabric ingestion layer for 20+ source systems</h2>
+      <p class="drawer__role">Microsoft Fabric ETL Developer at Tantus Solutions Group Inc., Edmonton, AB, working on the PCL Construction account</p>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>The challenge</h3>
+        <p>A national construction leader needed one trustworthy staging and ingestion layer for finance and operations reporting. Data was spread across 20+ systems including Salesforce, Oracle, SAP, AON, HR and Bond, each with its own formats, schedules and quirks.</p>
+      </section>
+      <section>
+        <h3>What I did</h3>
+        <ul>
+          <li>Architected and own the Microsoft Fabric workspace covering the full staging and ingestion layer.</li>
+          <li>Built high-volume Fabric Data Pipelines and Dataflow Gen2 workflows processing millions of records per cycle.</li>
+          <li>Rebuilt the normalized Lakehouse warehouse models to remove redundancy and speed up queries.</li>
+          <li>Engineered historical and incremental loads with automated cleansing routines.</li>
+          <li>Added schema drift detection, audit logging and restartable, idempotent pipeline patterns so failed runs recover without manual work.</li>
+          <li>Produced and validated source-to-target mappings across 32+ datasets for lineage and audit readiness.</li>
+          <li>Supported Microsoft Purview integration for discovery, classification and stewardship, validating lineage from Fabric source layers into certified Power BI semantic models.</li>
+          <li>Mentored junior engineers on pipeline design and metadata standards. My design docs and knowledge-transfer materials became team onboarding references.</li>
+          <li>Used GitHub Copilot to speed up code development, conversion, documentation and testing.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Results</h3>
+        <ul class="results">
+          <li><strong>100%</strong><span>On-time delivery against ingestion SLAs</span></li>
+          <li><strong>~40%</strong><span>Faster query performance</span></li>
+          <li><strong>−25%</strong><span>Data redundancy</span></li>
+          <li><strong>−35%</strong><span>Manual reprocessing &amp; exception handling</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Stack</h3>
+        <ul class="chips">
+          <li>Microsoft Fabric</li><li>Fabric Data Pipelines</li><li>Dataflow Gen2</li><li>Fabric Warehouse</li><li>OneLake</li><li>Lakehouse</li><li>Delta Lake</li>
+          <li>Azure Data Factory</li><li>Deployment Pipelines</li><li>Salesforce</li><li>Power BI</li><li>Semantic Models</li><li>Microsoft Purview</li><li>T-SQL</li><li>Python</li>
+        </ul>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="drawer drawer--blue" id="case-cwb" aria-labelledby="case-cwb-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>02 · 2022 — 2025</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">Tantus Solutions Group Inc. · Client: Canadian Western Bank</p>
+      <h2 class="drawer__title" id="case-cwb-title">Regulatory &amp; AML pipelines that hit SLA for three years</h2>
+      <p class="drawer__role">ETL Developer / Data Consultant at Tantus Solutions Group Inc., Edmonton, AB, working on the Canadian Western Bank account</p>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>The challenge</h3>
+        <p>A regulated bank depended on accurate, on-time data for AML, KYC, CDD, EDD, SAR and FINTRAC regulatory reporting, transaction monitoring and credit risk. That meant high-volume feeds from ACH, ATM, EFT, wires, POS, cheques and billing, all while modernizing from SAS 9 to SAS Viya.</p>
+      </section>
+      <section>
+        <h3>What I did</h3>
+        <ul>
+          <li>Owned every incremental ETL pipeline across core banking, AML and regulatory datasets.</li>
+          <li>Engineered CDC and SCD Type 2 pipelines processing 20M+ transaction records per batch cycle across AML, KYC, ATS, Loans and Credit Card portfolios.</li>
+          <li>Wrote 50+ Base SAS and SAS Macro diagnostic and remediation scripts to fix recurring data quality, reconciliation and root-cause defects.</li>
+          <li>Built test-driven pipelines with SQL profiling and checksum validation in stored procedures.</li>
+          <li>Automated ETL workflows end to end and governed CI/CD releases across Dev, Test and Prod.</li>
+          <li>Authored the SAS/SQL package standard adopted team-wide across 150+ package migrations from SAS 9.3 to SAS Viya, and supported a SAS 9.4 to Viya 3.5/4 migration proof-of-concept.</li>
+          <li>Enabled real-time access to core banking systems through Denodo data virtualization, bridging legacy SAS and cloud platforms without moving data.</li>
+          <li>Delivered ad hoc curated datasets and visualizations in SAS Enterprise Guide for business and compliance requests.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Results</h3>
+        <ul class="results">
+          <li><strong>99.5%</strong><span>SLA compliance over three years</span></li>
+          <li><strong>~95%</strong><span>Repeat defects eliminated</span></li>
+          <li><strong>−45%</strong><span>Production defects</span></li>
+          <li><strong>−50%</strong><span>Release failures</span></li>
+          <li><strong>−25%</strong><span>Manual effort &amp; integration errors</span></li>
+          <li><strong>$1,200</strong><span>Saved per month in operational costs</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Stack</h3>
+        <ul class="chips">
+          <li>SAS DI Studio</li><li>SAS Enterprise Guide</li><li>Base SAS</li><li>SAS Macro</li><li>PROC SQL</li><li>PROC PYTHON</li><li>SAS Viya</li><li>SAS Flow Manager</li>
+          <li>SQL Server</li><li>T-SQL</li><li>Denodo</li><li>Pentaho</li><li>PowerShell</li><li>TFS</li><li>CI/CD</li>
+        </ul>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="drawer drawer--orange" id="case-lifeworks" aria-labelledby="case-lifeworks-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>03 · 2021 — 2022</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">LifeWorks · Toronto, ON</p>
+      <h2 class="drawer__title" id="case-lifeworks-title">Enterprise analytics on SQL Server &amp; Azure</h2>
+      <p class="drawer__role">MSBI Developer</p>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>The challenge</h3>
+        <p>Enterprise analytics workloads needed 10M+ records a day loaded reliably, faster SQL performance, and dashboards that leadership could act on.</p>
+      </section>
+      <section>
+        <h3>What I did</h3>
+        <ul>
+          <li>Engineered SSIS and Azure Data Factory pipelines handling 10M+ records a day.</li>
+          <li>Tuned SQL Server and Azure SQL workloads using execution plan analysis, DMVs and indexing.</li>
+          <li>Built Power BI semantic models and 10+ executive dashboards aligned to business KPIs.</li>
+          <li>Designed UML use cases, ER diagrams and end-to-end data flows in Visio.</li>
+          <li>Drove UAT and performance testing across Dev, SIT, UAT and Production.</li>
+          <li>Delivered scheduled and on-demand SSRS reports through Report Builder, and maintained 100+ SQL objects enforcing data validation and access controls.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Results</h3>
+        <ul class="results">
+          <li><strong>0</strong><span>Missed SLAs</span></li>
+          <li><strong>+21%</strong><span>ETL &amp; reporting performance</span></li>
+          <li><strong>−30%</strong><span>Decision turnaround</span></li>
+          <li><strong>99%</strong><span>Release stability at sign-off</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Stack</h3>
+        <ul class="chips">
+          <li>SQL Server</li><li>Azure SQL</li><li>PostgreSQL</li><li>SSIS</li><li>SSDT</li><li>Azure Data Factory</li><li>Azure Blob Storage</li><li>Azure Data Lake</li>
+          <li>SSRS</li><li>Power BI</li><li>T-SQL</li><li>Python</li><li>Visio</li><li>Jira</li>
+        </ul>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="drawer drawer--green" id="case-rh" aria-labelledby="case-rh-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>04 · 2019 — 2021</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">Russell Hendrix Food Service Equipment · Toronto, ON</p>
+      <h2 class="drawer__title" id="case-rh-title">Retiring legacy DTS and building a modern EDW</h2>
+      <p class="drawer__role">SQL / MSBI Developer</p>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>The challenge</h3>
+        <p>The business ran on end-of-life DTS packages and needed a stable, modern data warehouse, faster reporting and clean master data.</p>
+      </section>
+      <section>
+        <h3>What I did</h3>
+        <ul>
+          <li>Architected ETL pipelines ingesting 8M+ records into EDW dimensional models.</li>
+          <li>Migrated 50+ end-of-life DTS packages into reusable, modular SSIS frameworks, removing an unsupported legacy dependency.</li>
+          <li>Wrote and tuned SQL procedures, views and indexes across high-volume reporting workloads.</li>
+          <li>Replicated schemas into Snowflake and built ADF pipelines for mastering MDM data.</li>
+          <li>Partnered with data warehouse architects to turn business requirements into medallion-layer warehouse designs.</li>
+          <li>Built and maintained 25+ MSBI reporting solutions, fulfilling 15+ ad hoc requests a day.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Results</h3>
+        <ul class="results">
+          <li><strong>99.9%</strong><span>Data accuracy</span></li>
+          <li><strong>+35%</strong><span>Query performance</span></li>
+          <li><strong>50+</strong><span>DTS packages retired</span></li>
+          <li><strong>99.5%</strong><span>Deployment success</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Stack</h3>
+        <ul class="chips">
+          <li>SQL Server</li><li>T-SQL</li><li>DB2</li><li>Snowflake</li><li>SSIS</li><li>SSDT</li><li>Azure Data Factory</li><li>Power BI</li><li>SSRS</li>
+          <li>ERwin</li><li>Star Schema</li><li>MDM</li><li>TFS</li>
+        </ul>
+      </section>
+    </div>
+  </dialog>
+
+  <!-- Certification "Read more" drawers -->
+  <dialog class="drawer drawer--ink" id="cert-dp700" aria-labelledby="cert-dp700-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>Certification · Microsoft</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">DP-700 · Associate · Intermediate</p>
+      <h2 class="drawer__title" id="cert-dp700-title">Microsoft Certified: Fabric Data Engineer Associate</h2>
+      <a class="drawer__cta" href="https://learn.microsoft.com/en-us/users/mushtaqahmed-9706/credentials/33e846488caf0510" target="_blank" rel="noopener noreferrer">Show credential <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>Official certificate</h3>
+        <a class="cert-img" href="certs/fabric-dp700.jpg" target="_blank" rel="noopener">
+          <img src="certs/fabric-dp700.jpg" alt="Microsoft certificate: Mushtaq Ahmed has successfully passed all requirements for Microsoft Certified: Fabric Data Engineer Associate. Earned August 10, 2026, expires August 11, 2027." width="1173" height="619" loading="lazy">
+        </a>
+      </section>
+      <section>
+        <h3>About this certification</h3>
+        <p>Microsoft's role-based certification for data engineers on Microsoft Fabric. Microsoft describes it this way: <q>As a Fabric Data Engineer, you should have subject matter expertise with data loading patterns, data architectures, and orchestration processes.</q> Earning it means passing Exam DP-700, which tests hands-on skill transforming data with SQL, PySpark and KQL.</p>
+      </section>
+      <section>
+        <h3>Skills measured</h3>
+        <ul>
+          <li>Implement and manage an analytics solution</li>
+          <li>Ingest and transform data</li>
+          <li>Monitor and optimize an analytics solution</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Skills gained</h3>
+        <ul class="chips">
+          <li>Microsoft Fabric</li><li>Data Loading Patterns</li><li>Data Architecture</li><li>Orchestration</li><li>SQL</li><li>PySpark</li><li>KQL</li>
+          <li>Securing Analytics Solutions</li><li>Monitoring &amp; Optimization</li>
+        </ul>
+      </section>
+      <section>
+        <h3>In practice</h3>
+        <p>I use these skills every day as the Microsoft Fabric ETL Developer on the PCL Construction account at Tantus Solutions Group. There I own the Fabric ingestion layer for 20+ source systems, built on Data Pipelines, Dataflow Gen2, Lakehouse and Warehouse.</p>
+      </section>
+      <section>
+        <h3>Details</h3>
+        <dl class="cert-meta">
+          <div><dt>Issuer</dt><dd>Microsoft</dd></div>
+          <div><dt>Earned</dt><dd>August 10, 2026</dd></div>
+          <div><dt>Expires</dt><dd>August 11, 2027</dd></div>
+          <div><dt>Credential ID</dt><dd>33E846488CAF0510</dd></div>
+        </dl>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="drawer drawer--ink" id="cert-sas" aria-labelledby="cert-sas-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>Certification · SAS</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">Knowledge badge · Programming</p>
+      <h2 class="drawer__title" id="cert-sas-title">SAS SQL Essentials Knowledge Badge</h2>
+      <a class="drawer__cta" href="https://www.credly.com/badges/5d173118-a1ec-47fd-8380-7e06faccbaf4" target="_blank" rel="noopener noreferrer">Show credential <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>Official badge</h3>
+        <a class="cert-img cert-img--badge" href="certs/sas-sql-essentials.jpg" target="_blank" rel="noopener">
+          <img src="certs/sas-sql-essentials.jpg" alt="SAS Programming Knowledge badge" width="1076" height="1280" loading="lazy">
+        </a>
+      </section>
+      <section>
+        <h3>About this badge</h3>
+        <p>From SAS: <q>The earner of this badge has demonstrated proficiency in using SAS SQL for data processing. They can query, subset, summarize, and present data, as well as combine tables using joins and set operators. Additionally, they can create and modify tables and views, generate macro variables with PROC SQL, and access DBMS data using SAS/ACCESS technology.</q></p>
+      </section>
+      <section>
+        <h3>What it covers</h3>
+        <ul>
+          <li>Querying, subsetting, summarizing and presenting data with PROC SQL</li>
+          <li>Combining tables with joins and set operators</li>
+          <li>Creating and modifying tables and views</li>
+          <li>Generating macro variables with PROC SQL</li>
+          <li>Accessing DBMS data with SAS/ACCESS</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Skills gained</h3>
+        <ul class="chips">
+          <li>SAS</li><li>SQL</li><li>Data Processing</li><li>Data Management</li><li>Database Queries</li><li>Data Analysis</li>
+        </ul>
+      </section>
+      <section>
+        <h3>In practice</h3>
+        <p>PROC SQL and SAS Macro were core tools in my three years on the Canadian Western Bank account. I wrote 50+ diagnostic and remediation scripts and authored the SAS/SQL package standard used across 150+ migrations to SAS Viya.</p>
+      </section>
+      <section>
+        <h3>Details</h3>
+        <dl class="cert-meta">
+          <div><dt>Issuer</dt><dd>SAS</dd></div>
+          <div><dt>Issued</dt><dd>January 12, 2026</dd></div>
+          <div><dt>Earning criteria</dt><dd>Passing score on the SAS SQL Essentials assessment</dd></div>
+          <div><dt>Verified by</dt><dd>Credly</dd></div>
+        </dl>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="drawer drawer--ink" id="cert-dbx" aria-labelledby="cert-dbx-title" data-lenis-prevent>
+    <div class="drawer__head">
+      <div class="drawer__bar">
+        <span>Accreditation · Databricks</span>
+        <button class="drawer__close" data-close aria-label="Close">Close ✕</button>
+      </div>
+      <p class="drawer__client">Databricks Academy</p>
+      <h2 class="drawer__title" id="cert-dbx-title">Academy Accreditation: Databricks Fundamentals</h2>
+      <a class="drawer__cta" href="https://credentials.databricks.com/6fce6d3b-1702-4b2f-8b9b-789ef9138cbf" target="_blank" rel="noopener noreferrer">Show credential <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="drawer__body">
+      <section>
+        <h3>Official certificate</h3>
+        <a class="cert-img" href="certs/databricks-fundamentals.png" target="_blank" rel="noopener">
+          <img src="certs/databricks-fundamentals.png" alt="Databricks Academy certificate: Mushtaq Ahmed, Databricks Accredited Databricks Fundamentals, issued January 11, 2026." width="600" height="464" loading="lazy">
+        </a>
+      </section>
+      <section>
+        <h3>About this accreditation</h3>
+        <p>From Databricks: <q>Earners of the Databricks Fundamentals accreditation have demonstrated the understanding of fundamental concepts related to Databricks Data Intelligence Platform.</q></p>
+      </section>
+      <section>
+        <h3>Skills gained</h3>
+        <ul class="chips">
+          <li>Databricks</li><li>Data Intelligence Platform</li><li>Data Management Platforms</li><li>Lakehouse Architecture</li>
+        </ul>
+      </section>
+      <section>
+        <h3>In practice</h3>
+        <p>Lakehouse fundamentals carry straight over to my Microsoft Fabric work. Delta Lake, medallion layers and Spark notebooks are shared ground between the two platforms.</p>
+      </section>
+      <section>
+        <h3>Details</h3>
+        <dl class="cert-meta">
+          <div><dt>Issuer</dt><dd>Databricks</dd></div>
+          <div><dt>Issued</dt><dd>January 11, 2026</dd></div>
+          <div><dt>Expires</dt><dd>Does not expire</dd></div>
+          <div><dt>Credential ID</dt><dd>171446161</dd></div>
+          <div><dt>Earning criteria</dt><dd>Assessment on fundamental Databricks Lakehouse Platform concepts</dd></div>
+        </dl>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
