@@ -1,4 +1,5 @@
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(pointer: fine)").matches;
 const hasGsap = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 
 // Footer year + Edmonton local time
@@ -9,7 +10,7 @@ const tick = () => { timeEl.textContent = fmt.format(new Date()); };
 tick();
 setInterval(tick, 30_000);
 
-// Split the about statement into words for the scroll "fill" effect
+// Split the intro statement into words for the scroll "fill" effect
 // Built with DOM nodes rather than innerHTML so text is never parsed as markup
 document.querySelectorAll("[data-words]").forEach((el) => {
   const words = el.textContent.trim().split(/\s+/);
@@ -26,6 +27,10 @@ let lenis = null;
 
 initDrawers();
 initNetwork();
+initTabs();
+initMenu();
+initNav();
+initGlow();
 
 if (!hasGsap || reduceMotion) {
   // No animation library (or user prefers less motion): show everything immediately
@@ -34,7 +39,6 @@ if (!hasGsap || reduceMotion) {
   gsap.registerPlugin(ScrollTrigger);
   initSmoothScroll();
   initReveals();
-  initNav();
 }
 
 function initSmoothScroll() {
@@ -50,7 +54,7 @@ function initSmoothScroll() {
       const target = document.querySelector(a.getAttribute("href"));
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -70, duration: 1.2 });
+      lenis.scrollTo(target, { offset: -80, duration: 1.2 });
       // Move keyboard focus with the scroll (skip link, nav), without a second jump
       if (target.matches("main, section, footer")) {
         target.setAttribute("tabindex", "-1");
@@ -60,77 +64,154 @@ function initSmoothScroll() {
   });
 }
 
-// Calm, consistent motion: content fades up gently once as it enters the screen.
+// Motion: the hero headline rises in word by word, then content fades up as it enters the screen.
 // fromTo with explicit end states: a plain from() re-reads its end values when the page re-measures
 // (resize, drawer open/close) and can freeze an element in its offset start state.
 function initReveals() {
-  const fadeUp = (targets, trigger, opts = {}) => gsap.fromTo(targets, { y: 24, opacity: 0 }, {
-    y: 0, opacity: 1, duration: 0.8, ease: "power2.out", stagger: opts.stagger || 0,
+  const fadeUp = (targets, trigger, opts = {}) => gsap.fromTo(targets, { y: 30, opacity: 0 }, {
+    y: 0, opacity: 1, duration: 0.9, ease: "power3.out", stagger: opts.stagger || 0,
     scrollTrigger: { trigger: trigger || targets, start: "top 88%" },
   });
 
-  // Landing area appears on load
-  gsap.fromTo([".hero__meta", ".hero__name", ".hero__bottom"], { y: 16, opacity: 0 }, {
-    y: 0, opacity: 1, duration: 0.9, ease: "power2.out", stagger: 0.12, delay: 0.1,
-  });
+  // Hero entrance
+  gsap.timeline({ delay: 0.15 })
+    .fromTo(".hero__title .word", { yPercent: 110, rotate: 4 }, { yPercent: 0, rotate: 0, duration: 1.2, ease: "expo.out", stagger: 0.08 })
+    .fromTo([".hero__eyebrow", ".hero__lead", ".hero__cta", ".hero__scroll"], { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.1 }, "-=0.9");
 
-  gsap.utils.toArray(".section__head .title").forEach((t) => fadeUp(t));
-  gsap.utils.toArray(".case").forEach((c) => fadeUp(c));
-  [".step", ".skill", ".edu-card", ".cred-feature"].forEach((sel) => fadeUp(sel, sel, { stagger: 0.07 }));
-  gsap.utils.toArray(".cred-list").forEach((list) => fadeUp(list.children, list, { stagger: 0.05 }));
-  fadeUp(".contact > *", ".contact", { stagger: 0.06 });
+  gsap.utils.toArray("[data-reveal]").forEach((el) => fadeUp(el));
+  gsap.utils.toArray(".work .case").forEach((c) => fadeUp(c));
+  [".pillar", ".cred-feature", ".questions li", ".svc"].forEach((sel) => fadeUp(sel, sel, { stagger: 0.07 }));
 
-  // Statement words fill in as you scroll
-  gsap.to(".statement .w", {
+  // Intro words fill in as you scroll
+  gsap.to(".intro__text .w", {
     opacity: 1, stagger: 0.05, ease: "none",
-    scrollTrigger: { trigger: ".statement", start: "top 80%", end: "bottom 50%", scrub: true },
+    scrollTrigger: { trigger: ".intro__text", start: "top 80%", end: "bottom 50%", scrub: true },
   });
 
-  // Count-up numbers
+  // Count-up numbers (data-count, optional data-decimals / data-prefix / data-suffix)
   document.querySelectorAll("[data-count]").forEach((el) => {
     const end = parseFloat(el.dataset.count);
     const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const prefix = el.dataset.prefix || "";
     const suffix = el.dataset.suffix || "";
     const obj = { v: 0 };
-    el.textContent = (0).toFixed(decimals) + suffix;
+    el.textContent = prefix + (0).toFixed(decimals) + suffix;
     gsap.to(obj, {
       v: end, duration: 1.6, ease: "power2.out",
       scrollTrigger: { trigger: el, start: "top 90%" },
-      onUpdate: () => { el.textContent = obj.v.toFixed(decimals) + suffix; },
+      onUpdate: () => { el.textContent = prefix + obj.v.toFixed(decimals) + suffix; },
     });
   });
 
-  // Stats: accent lines draw in
-  gsap.utils.toArray(".stats li").forEach((li, i) => {
-    ScrollTrigger.create({
-      trigger: ".stats", start: "top 85%", once: true,
-      onEnter: () => setTimeout(() => li.classList.add("is-in"), i * 120),
-    });
-  });
-
-  // Process rail fills left to right; each step lights up as the fill reaches it
+  // Approach rail fills left to right; each pillar lights up as the fill reaches it
   const steps = gsap.utils.toArray(".step");
   gsap.to(".rail__fill", {
     scaleX: 1, ease: "none",
     scrollTrigger: {
-      trigger: ".steps", start: "top 80%", end: "bottom 55%", scrub: true,
+      trigger: ".pillars", start: "top 80%", end: "bottom 55%", scrub: true,
       onUpdate: (self) => steps.forEach((s, i) => s.classList.toggle("is-on", self.progress >= (i + 0.5) / steps.length)),
     },
   });
 }
 
-// The nav tucks away while scrolling down and returns when scrolling up
+// Nav: glass pill once scrolled, tucks away while scrolling down, highlights the section in view
 function initNav() {
-  const nav = document.querySelector(".nav");
-  ScrollTrigger.create({
-    start: 0, end: "max",
-    onUpdate: (self) => {
-      const hide = self.direction === 1 && self.scroll() > window.innerHeight * 0.6;
-      gsap.to(nav, { yPercent: hide ? -110 : 0, duration: 0.4, ease: "power2.out", overwrite: "auto" });
-    },
-  });
+  const nav = document.getElementById("nav");
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.classList.toggle("is-scrolled", y > 30);
+    const goingDown = y > lastY && y > window.innerHeight * 0.6;
+    const menuOpen = document.documentElement.classList.contains("menu-open");
+    nav.classList.toggle("is-hidden", goingDown && !menuOpen && !nav.contains(document.activeElement));
+    lastY = y;
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
   // Never leave the nav hidden while someone is tabbing through it
-  nav.addEventListener("focusin", () => gsap.to(nav, { yPercent: 0, duration: 0.2, overwrite: "auto" }));
+  nav.addEventListener("focusin", () => nav.classList.remove("is-hidden"));
+
+  const links = [...document.querySelectorAll(".nav__links a")];
+  const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      links.forEach((a) => {
+        const on = a.getAttribute("href") === "#" + entry.target.id;
+        a.classList.toggle("is-active", on);
+        if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      });
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach((s) => spy.observe(s));
+}
+
+// Mobile menu: full-screen panel revealed from the burger; Esc or any link closes it
+function initMenu() {
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("menu");
+  const root = document.documentElement;
+  if (!burger || !menu) return;
+
+  const setOpen = (open) => {
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (open) {
+      menu.hidden = false;
+      // Let the browser paint the closed state first so the circular reveal animates
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add("menu-open")));
+      if (lenis) lenis.stop();
+    } else {
+      root.classList.remove("menu-open");
+      if (lenis) lenis.start();
+      setTimeout(() => { if (!root.classList.contains("menu-open")) menu.hidden = true; }, reduceMotion ? 0 : 900);
+    }
+  };
+
+  burger.addEventListener("click", () => setOpen(burger.getAttribute("aria-expanded") !== "true"));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && burger.getAttribute("aria-expanded") === "true") { setOpen(false); burger.focus(); }
+  });
+  // Close if the screen grows past the mobile breakpoint
+  window.matchMedia("(min-width: 1181px)").addEventListener("change", (e) => { if (e.matches) setOpen(false); });
+}
+
+// Skills: accessible tabs (click, or Arrow/Home/End keys) following the WAI-ARIA tabs pattern
+function initTabs() {
+  const tabs = [...document.querySelectorAll(".svc__tab")];
+  if (!tabs.length) return;
+  const select = (tab, focus) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).classList.toggle("is-active", on);
+    });
+    if (focus) tab.focus();
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => select(tab, false));
+    tab.addEventListener("keydown", (e) => {
+      const keys = { ArrowDown: i + 1, ArrowRight: i + 1, ArrowUp: i - 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+      if (!(e.key in keys)) return;
+      e.preventDefault();
+      select(tabs[(keys[e.key] + tabs.length) % tabs.length], true);
+    });
+  });
+}
+
+// Cards: a soft lime glow follows the pointer (CSS reads --mx / --my)
+function initGlow() {
+  if (!finePointer) return;
+  document.querySelectorAll(".case, .cred-feature").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
 }
 
 // Landing-area background: drifting dots joined by lines when close, which also reach out to the pointer
@@ -139,8 +220,8 @@ function initNetwork() {
   const canvas = document.querySelector(".hero__network");
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext("2d");
-  const hero = canvas.parentElement;
-  const INK = "30, 43, 69", ACCENT = "154, 79, 42"; // navy and copper from the palette
+  const hero = canvas.closest(".hero");
+  const INK = "233, 240, 239", ACCENT = "219, 224, 90"; // mist lines and citron accents on the dark theme
   let w = 0, h = 0, dpr = 1, dots = [], raf = 0, running = false, visible = true;
   let linkDist = 140, mouseDist = 200;
   const mouse = { x: -9999, y: -9999, active: false };
@@ -159,7 +240,7 @@ function initNetwork() {
       x: Math.random() * w, y: Math.random() * h,
       vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
       r: 1.1 + Math.random() * 1.2,
-      accent: i % 10 === 0,
+      accent: i % 8 === 0,
     }));
   }
 
@@ -203,13 +284,13 @@ function initNetwork() {
       if (mouse.active) {
         const dist = Math.hypot(mouse.x - a.x, mouse.y - a.y);
         if (dist < mouseDist) {
-          ctx.strokeStyle = `rgba(${ACCENT}, ${(1 - dist / mouseDist) * 0.4})`;
+          ctx.strokeStyle = `rgba(${ACCENT}, ${(1 - dist / mouseDist) * 0.55})`;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
         }
       }
     }
     for (const d of dots) {
-      ctx.fillStyle = d.accent ? `rgba(${ACCENT}, 0.7)` : `rgba(${INK}, 0.32)`;
+      ctx.fillStyle = d.accent ? `rgba(${ACCENT}, 0.9)` : `rgba(${INK}, 0.4)`;
       ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fill();
     }
   }
