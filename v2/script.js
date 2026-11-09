@@ -26,7 +26,7 @@ document.querySelectorAll("[data-words]").forEach((el) => {
 let lenis = null;
 
 initDrawers();
-initNetwork();
+initNetworks();
 initTabs();
 initMenu();
 initNav();
@@ -214,21 +214,31 @@ function initGlow() {
   });
 }
 
-// Landing-area background: drifting dots joined by lines when close, which also reach out to the pointer
+// Interactive network: drifting dots joined by lines when close, which also reach out to the pointer
 // and drift gently toward it. Pure canvas drawing; pauses off screen and in background tabs; static for reduced motion.
-function initNetwork() {
-  const canvas = document.querySelector(".hero__network");
-  if (!canvas || !canvas.getContext) return;
+// Two instances: the landing area (mist lines, deep emerald accents) and, where present, a page-wide white one
+// fixed behind the black sections.
+function initNetworks() {
+  const hero = document.querySelector(".hero");
+  const heroCanvas = document.querySelector(".hero__network");
+  if (heroCanvas) initNetwork(heroCanvas, { area: hero, ink: "233, 240, 239", accent: "5, 150, 105", accentEvery: 8 });
+  const pageCanvas = document.querySelector(".bg-network");
+  if (pageCanvas) initNetwork(pageCanvas, { fixed: true, ink: "255, 255, 255", accent: "255, 255, 255", accentEvery: 0, hero });
+}
+
+function initNetwork(canvas, opts) {
+  if (!canvas.getContext) return;
   const ctx = canvas.getContext("2d");
-  const hero = canvas.closest(".hero");
-  const INK = "233, 240, 239", ACCENT = "219, 224, 90"; // mist lines and citron accents on the dark theme
+  const area = opts.area;
+  const INK = opts.ink, ACCENT = opts.accent;
   let w = 0, h = 0, dpr = 1, dots = [], raf = 0, running = false, visible = true;
   let linkDist = 140, mouseDist = 200;
   const mouse = { x: -9999, y: -9999, active: false };
 
   function build() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = hero.clientWidth; h = hero.clientHeight;
+    w = opts.fixed ? window.innerWidth : area.clientWidth;
+    h = opts.fixed ? window.innerHeight : area.clientHeight;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const small = w < 760;
@@ -240,7 +250,7 @@ function initNetwork() {
       x: Math.random() * w, y: Math.random() * h,
       vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
       r: 1.1 + Math.random() * 1.2,
-      accent: i % 8 === 0,
+      accent: opts.accentEvery > 0 && i % opts.accentEvery === 0,
     }));
   }
 
@@ -301,20 +311,35 @@ function initNetwork() {
 
   build(); draw();
   let resizeTimer = 0;
-  new ResizeObserver(() => {
+  const rebuild = () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => { build(); draw(); }, 150);
-  }).observe(hero);
+  };
+  if (opts.fixed) window.addEventListener("resize", rebuild);
+  else new ResizeObserver(rebuild).observe(area);
   if (reduceMotion) return; // a still constellation only
 
-  // Pointer position relative to the landing area (it scrolls with the page)
-  hero.addEventListener("pointermove", (e) => {
-    const r = hero.getBoundingClientRect();
-    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
-  }, { passive: true });
-  hero.addEventListener("pointerleave", () => { mouse.active = false; });
+  if (opts.fixed) {
+    // Fixed to the screen, so pointer coordinates are used as-is
+    window.addEventListener("pointermove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; }, { passive: true });
+    document.addEventListener("pointerleave", () => { mouse.active = false; });
+    // Only animate once the landing area no longer fills the screen (it hides this canvas until then)
+    if (opts.hero) {
+      new IntersectionObserver(([entry]) => {
+        visible = entry.intersectionRatio < 0.95;
+        visible ? start() : stop();
+      }, { threshold: [0, 0.95, 1] }).observe(opts.hero);
+    }
+  } else {
+    // Pointer position relative to the area (it scrolls with the page)
+    area.addEventListener("pointermove", (e) => {
+      const r = area.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
+    }, { passive: true });
+    area.addEventListener("pointerleave", () => { mouse.active = false; });
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? start() : stop(); }).observe(area);
+  }
   window.addEventListener("blur", () => { mouse.active = false; });
-  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? start() : stop(); }).observe(hero);
   document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
   start();
 }
